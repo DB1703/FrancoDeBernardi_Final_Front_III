@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Cuando sea oscuro background-color: #ccd3be; */
+    background-color: white;
+}

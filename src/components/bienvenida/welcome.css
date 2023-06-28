@@ -1,0 +1,15 @@
+.father {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+h2 {
+    color: black;
+    font-family: 'Cabin', sans-serif;
+    font-size: 50px;
+    width: 51vw;
+    text-align: center;
+}
