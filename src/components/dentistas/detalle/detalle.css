@@ -1,0 +1,11 @@
+.invisibleContainer {
+    height: 14vh;
+    color: black;
+    text-align: center;
+    font-size: xx-large;
+    padding: 15px;
+}
+
+span {
+    color: black;
+}
