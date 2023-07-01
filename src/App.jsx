@@ -1,5 +1,6 @@
 import './App.css'
 import Nav from './components/nav/Nav'
+import Footer from './components/footer/Footer'
 import Welcome from './components/bienvenida/Welcome'
 import Dentistas from './components/dentistas/Dentistas'
 import Destacados from './components/dentistas/destacados/Destacados'
@@ -21,6 +22,7 @@ function App() {
         <Route path='contacto' element={<Contacto/>}/>
         <Route path='*' element={<h1>404</h1>}/>
       </Routes>
+      <Footer/>
     </>
   )
 }
