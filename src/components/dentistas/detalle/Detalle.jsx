@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../detalle/detalle.css'
 
 function Detalle() {
     const [dentista, setDentista] = useState()
     const params = useParams()
+    const atras = useNavigate()
 
     async function handleDentista(param) {
         const response = await(fetch(`https://jsonplaceholder.typicode.com/users/${param}`))
@@ -19,6 +20,10 @@ function Detalle() {
         handleDentista(params.id)
     },[])
 
+    function volver() {
+        atras(-1)
+    }
+
     
     return (
         <>
@@ -27,7 +32,7 @@ function Detalle() {
                     <div className="invisibleContainer">
                         <p>Doctor Número: {dentista.id}</p>
                     </div>
-                    <li key={dentista.id}>
+                    <li key={dentista.id} className='li'>
                         <header>
                             <img src="/img/doctor.jpg" alt="imagenDoctor" />
                         </header>
@@ -36,8 +41,8 @@ function Detalle() {
                         <span>{dentista.email}</span>
                         <span>{dentista.phone}</span>
                         <span> {dentista.address.city}, {dentista.address.street}</span>
-                        <button onClick={()=>props.buttonClick(dentista.id)} className="button-destacado">
-                            Destacar
+                        <button onClick={volver} className="button-destacado">
+                            Atrás
                         </button>
                     </li>
 

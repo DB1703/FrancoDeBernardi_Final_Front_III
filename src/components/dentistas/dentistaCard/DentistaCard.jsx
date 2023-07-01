@@ -1,21 +1,45 @@
+import { useState, useEffect } from 'react';
 import {  Link } from 'react-router-dom'
 
 function DentistaCard(props) {
+    const [favs, setFavs] = useState([])
+
+    useEffect(() => {
+        const favsFromLocalStorage = JSON.parse(localStorage.getItem('favs')) || [];
+        setFavs(favsFromLocalStorage);
+      }, []);
+
+    function handleDestacado(usuarioDestacado) {
+        if (!favs.some((favorito) => favorito.id === usuarioDestacado.id)) {
+          const nuevosFavs = [...favs, usuarioDestacado];
+          setFavs(nuevosFavs);
+          localStorage.setItem('favs', JSON.stringify(nuevosFavs));
+        }
+    }
+    
+    function handleRemover(usuarioDestacado) {
+        const nuevosFavs = favs.filter((favorito) => favorito.id !== usuarioDestacado.id);
+        setFavs(nuevosFavs);
+        localStorage.setItem('favs', JSON.stringify(nuevosFavs));
+    }
+
     return (
         <>
         {props.usuarios.map((usuario)=>(
-                        <Link key={usuario.id} to={`dentista/${usuario.id}`}>
-                            <li key={usuario.id}>
+                    <div key={usuario.id} className='contornoCard'>
+                        <Link to={`dentista/${usuario.id}`}>
+                            <li>
                                 <header>
                                     <img src="/img/doctor.jpg" alt="imagenDoctor" />
                                 </header>
                                 <p>{usuario.name}</p>
                                 <span>{usuario.username}</span>
-                                <button onClick={()=>props.buttonClick(usuario.id)} className="button-destacado">
-                                    Destacar
-                                </button>
                             </li>
                         </Link>
+                        <button onClick={() => props.isDestacadoPage ? handleRemover(usuario) : handleDestacado(usuario)} className="button-destacado">
+                            {props.isDestacadoPage ? 'Remover' : 'Destacar'}
+                        </button>
+                    </div>
                     ))}
         </>
     )
