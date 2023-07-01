@@ -5,9 +5,18 @@
 }
 
 body {
-    /* Cuando sea oscuro background-color: #ccd3be; */
-    background-color: white;
+    /* Cuando sea oscuro background-color: ; */
     position: relative;
     padding-bottom: 8em;
     min-height: 100vh;
 }
+
+.dark {
+    background-color: #ccd3be;
+    color: #fff;
+  }
+  
+  .light {
+    background-color: #f5f5f5;
+    /* color: white; */
+  }

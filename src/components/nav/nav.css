@@ -1,5 +1,13 @@
-nav {
+.nav-light {
     background-color: #6ba3ba;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 4rem;
+}
+
+.nav-dark {
+    background-color: #5c6330;
     display: flex;
     justify-content: space-around;
     align-items: center;
